@@ -10,6 +10,7 @@
 		C1D4E53E1BE2303D00601DBF /* URLSessionOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = C1D4E53D1BE2303D00601DBF /* URLSessionOperation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C1D4E5451BE2303D00601DBF /* URLSessionOperation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1D4E53A1BE2303D00601DBF /* URLSessionOperation.framework */; };
 		C1D4E54A1BE2303D00601DBF /* URLSessionOperationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D4E5491BE2303D00601DBF /* URLSessionOperationTests.swift */; };
+		C1D4E5551BE2305300601DBF /* URLSessionOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D4E5541BE2305300601DBF /* URLSessionOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		C1D4E5441BE2303D00601DBF /* URLSessionOperationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = URLSessionOperationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1D4E5491BE2303D00601DBF /* URLSessionOperationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionOperationTests.swift; sourceTree = "<group>"; };
 		C1D4E54B1BE2303D00601DBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1D4E5541BE2305300601DBF /* URLSessionOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			children = (
 				C1D4E53D1BE2303D00601DBF /* URLSessionOperation.h */,
 				C1D4E53F1BE2303D00601DBF /* Info.plist */,
+				C1D4E5541BE2305300601DBF /* URLSessionOperation.swift */,
 			);
 			path = URLSessionOperation;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1D4E5551BE2305300601DBF /* URLSessionOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +312,7 @@
 		C1D4E54F1BE2303D00601DBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -318,12 +323,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = mlloyd.URLSessionOperation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		C1D4E5501BE2303D00601DBF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;

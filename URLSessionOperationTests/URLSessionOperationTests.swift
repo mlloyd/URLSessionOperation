@@ -9,28 +9,50 @@
 import XCTest
 @testable import URLSessionOperation
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 class URLSessionOperationTests: XCTestCase {
     
+    var queue:   NSOperationQueue?
+    var session: NSURLSession?
+    
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        self.queue = NSOperationQueue()
+        self.queue?.maxConcurrentOperationCount = 1;
+
+        self.session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     }
     
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let URL_1 = NSURL(string: "http://www.google.com")
+        let URL_2 = NSURL(string: "http://www.yahoo.com")
+        
+        var result: Bool = false
+        
+        let operation = URLSessionOperation(session: self.session!, url: URL_1!, completion:{ (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            result = true
+        })
+        self.queue?.addOperation(operation)
+        
+        self.queue?.addOperation(URLSessionOperation(session: self.session!, url: URL_2!, completion:{ (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            result = true
+        }))
+        
+        self.queue?.waitUntilAllOperationsAreFinished()
+        
+        XCTAssertTrue(result)
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
