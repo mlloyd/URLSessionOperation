@@ -40,19 +40,20 @@ class URLSessionOperationTests: XCTestCase {
         let URL_1 = NSURL(string: "http://www.google.com")
         let URL_2 = NSURL(string: "http://www.yahoo.com")
         
-        var result: Bool = false
+        var result_1: Bool = false
+        var result_2: Bool = false
         
-        let operation = URLSessionOperation(session: self.session!, url: URL_1!, completion:{ (data: NSData?, response: NSURLResponse?, error: NSError?) in
-            result = true
-        })
-        self.queue?.addOperation(operation)
+        self.queue?.addOperation(URLSessionOperation(session: self.session!, url: URL_1!, completion:{ (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            result_1 = true
+        }))
         
         self.queue?.addOperation(URLSessionOperation(session: self.session!, url: URL_2!, completion:{ (data: NSData?, response: NSURLResponse?, error: NSError?) in
-            result = true
+            result_2 = true
         }))
         
         self.queue?.waitUntilAllOperationsAreFinished()
         
-        XCTAssertTrue(result)
+        XCTAssertTrue(result_1)
+        XCTAssertTrue(result_2)
     }
 }
