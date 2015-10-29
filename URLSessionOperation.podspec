@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = 'URLSessionOperation'
-  s.version      = '1.0.0'
+  s.version      = '1.0.1'
   s.summary      = 'URLSession + NSOperation wrapper'
 
   s.description  = 'Is a URLSession + NSOperation wrapper'
