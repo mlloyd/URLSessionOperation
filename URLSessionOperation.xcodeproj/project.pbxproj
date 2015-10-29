@@ -73,8 +73,8 @@
 		C1D4E53C1BE2303D00601DBF /* URLSessionOperation */ = {
 			isa = PBXGroup;
 			children = (
-				C1D4E53D1BE2303D00601DBF /* URLSessionOperation.h */,
 				C1D4E53F1BE2303D00601DBF /* Info.plist */,
+				C1D4E53D1BE2303D00601DBF /* URLSessionOperation.h */,
 				C1D4E5541BE2305300601DBF /* URLSessionOperation.swift */,
 			);
 			path = URLSessionOperation;
@@ -383,6 +383,7 @@
 				C1D4E5501BE2303D00601DBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C1D4E5511BE2303D00601DBF /* Build configuration list for PBXNativeTarget "URLSessionOperationTests" */ = {
 			isa = XCConfigurationList;
@@ -391,6 +392,7 @@
 				C1D4E5531BE2303D00601DBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

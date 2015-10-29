@@ -10,16 +10,16 @@ import UIKit
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-typealias URLSessionOperationCompletion = (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void
+public typealias URLSessionOperationCompletion = (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-class URLSessionOperation: NSOperation {
+public class URLSessionOperation: NSOperation {
 
     var task: NSURLSessionDataTask!
     
     private var _executing: Bool = false
-    override var executing: Bool {
+    public override var executing: Bool {
         get {
             return self._executing
         }
@@ -31,7 +31,7 @@ class URLSessionOperation: NSOperation {
     }
     
     private var _finished: Bool = false;
-    override var finished: Bool {
+    public override var finished: Bool {
         get { return self._finished }
         set { if self._finished != newValue {
                 willChangeValueForKey("isFinished")
@@ -43,7 +43,7 @@ class URLSessionOperation: NSOperation {
     
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
-    init(session: NSURLSession, url: NSURL, completion: URLSessionOperationCompletion) {
+    public init(session: NSURLSession, url: NSURL, completion: URLSessionOperationCompletion) {
         super.init()
         
         self.task = session.dataTaskWithURL(url, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) in
@@ -54,14 +54,14 @@ class URLSessionOperation: NSOperation {
     
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
-    override func cancel() {
+    public override func cancel() {
         super.cancel()
         self.task.cancel()
     }
     
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
-    override func start() {
+    public override func start() {
         if (self.cancelled) {
             self._finished = true
         }
@@ -73,13 +73,13 @@ class URLSessionOperation: NSOperation {
     
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
-    func asynchronous() -> Bool {
+    public func asynchronous() -> Bool {
         return self.asynchronous
     }
     
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
-    func completeOperationWithBlock(completion: URLSessionOperationCompletion,  data: NSData?, response: NSURLResponse?, error: NSError?) {
+    private func completeOperationWithBlock(completion: URLSessionOperationCompletion,  data: NSData?, response: NSURLResponse?, error: NSError?) {
         if self.cancelled == false {
             completion(data: data, response: response, error: error)
         }
@@ -89,7 +89,7 @@ class URLSessionOperation: NSOperation {
     
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
-    func completeOperation() {
+    private func completeOperation() {
         self.willChangeValueForKey("isFinished")
         self.willChangeValueForKey("isExecuting")
     
